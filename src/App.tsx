@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+import { NavBarSections } from "./@types/types";
+import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
+import Products from "./pages/Products";
+import Promotions from "./pages/Promotions";
+import Settings from "./pages/Settings";
+import Users from "./pages/Users";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeSection, setActiveSection] =
+    useState<NavBarSections>("DASHBOARD");
+
+  const renderItem = () => {
+    switch (activeSection) {
+      case "DASHBOARD":
+        return <Dashboard />;
+      case "ORDERS":
+        return <Orders />;
+      case "USER":
+        return <Users />;
+      case "PRODUCTS":
+        return <Products />;
+      case "PROMOTIONS":
+        return <Promotions />;
+      case "SETTINGS":
+        return <Settings />;
+      default:
+        return <Dashboard />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="">
+      <div className="flex">
+        <aside className="side-bar min-h-screen">
+          <NavBar activeSection={activeSection} setActiveSection={setActiveSection} />
+        </aside>
+        <div className="flex-1">
+          <div className="header flex-1 w-full bg-blue-400 fixed">
+            <Header />
+          </div>
+          <main className="main bg-cyan-700 h-screen">{renderItem()}</main>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
