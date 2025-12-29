@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div className='h-16 fixed'>Header</div>
   )
 }
 

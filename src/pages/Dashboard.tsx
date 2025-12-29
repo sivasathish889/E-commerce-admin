@@ -2,7 +2,11 @@
 const Dashboard = () => {
 
   return (
-    <div>Dashboard</div>
+    <div className=" min-w-full bg-amber-400 h-full">
+      <header className="header text-2xl">
+        DashBorad
+      </header>
+    </div>
   )
 }
 

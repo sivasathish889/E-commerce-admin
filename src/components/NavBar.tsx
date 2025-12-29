@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { NavBarSections } from "../@types/types";
 import { NavItems } from "../utils/constants";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -6,25 +5,31 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 type Props = {
   activeSection: NavBarSections;
   setActiveSection: (section: NavBarSections) => void;
+  hideBar: boolean;
+  setHideBar: (hideBar: boolean) => void;
 };
 
-const NavBar = ({ activeSection, setActiveSection }: Props) => {
-  const [hideBar, setHideBar] = useState(false);
+const NavBar = ({
+  activeSection,
+  setActiveSection,
+  hideBar,
+  setHideBar,
+}: Props) => {
   return (
-    <div className="h-full flex justify-between flex-col">
+    <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r-2 border-r-gray-300 fixed">
       <div>
         <div className="logo h-28">
           <img src="" alt="" />
         </div>
-        <div className="nav-item flex flex-col justify-center items-center px-3  ">
+        <div className="nav-item flex flex-col justify-center items-center px-3 transition-all duration-700 ease-in-out">
           {NavItems.map((item, idx) => (
             <div
               className={`
-              nav-item flex gap-2 not-md:justify-center md:justify-baseline items-center px-2 md:px-6 py-3 mx-1 md:mx-2 my-2 w-full cursor-pointer rounded-xl transition-all duration-700 ease-in-out text-black/75 text-xs lg:text-sm
+              nav-item flex gap-2 not-md:justify-center md:justify-baseline items-center px-2 md:px-6 py-3  my-2 w-full cursor-pointer rounded-xl transition-all duration-700 ease-in-out text-black/75 text-xs lg:text-sm
               ${
                 activeSection === item.name
-                  ? "bg-primary text-white"
-                  : "hover:bg-primary/15 " + (hideBar ? "justify-center " : "") + (hideBar ? "px-2" : "")
+                  ? "bg-primary text-white "
+                  : "hover:bg-primary/15  " + (hideBar ? "justify-center " : "")
               }
             `}
               key={idx}
@@ -33,7 +38,9 @@ const NavBar = ({ activeSection, setActiveSection }: Props) => {
               {item.icon}
 
               {hideBar ? null : (
-                <span className="hidden md:block transition-all duration-700 ease-in-out">{item.name}</span>
+                <span className="hidden md:block transition-all duration-700 ease-in-out">
+                  {item.name}
+                </span>
               )}
             </div>
           ))}
@@ -44,7 +51,7 @@ const NavBar = ({ activeSection, setActiveSection }: Props) => {
         onClick={() => setHideBar(!hideBar)}
       >
         {!hideBar ? (
-          <IoIosArrowBack size={26}  />
+          <IoIosArrowBack size={26} />
         ) : (
           <IoIosArrowForward size={26} />
         )}

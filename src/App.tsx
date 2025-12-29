@@ -13,6 +13,7 @@ import Users from "./pages/Users";
 function App() {
   const [activeSection, setActiveSection] =
     useState<NavBarSections>("DASHBOARD");
+  const [hideBar, setHideBar] = useState(false);
 
   const renderItem = () => {
     switch (activeSection) {
@@ -36,14 +37,23 @@ function App() {
   return (
     <div className="">
       <div className="flex">
-        <aside className="side-bar min-h-screen">
-          <NavBar activeSection={activeSection} setActiveSection={setActiveSection} />
+        <aside className="side-bar min-h-screen  ">
+          <NavBar
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+            hideBar={hideBar}
+            setHideBar={setHideBar}
+          />
         </aside>
         <div className="flex-1">
-          <div className="header flex-1 w-full bg-blue-400 fixed">
+          <div
+            className={`header flex-1 w-full ${hideBar ? "ml-25" : "ml-51"}`}
+          >
             <Header />
           </div>
-          <main className="main bg-cyan-700 h-screen">{renderItem()}</main>
+          <main className={`main  mt-16 ${hideBar ? "ml-25" : "ml-51"}`}>
+            {renderItem()}
+          </main>
         </div>
       </div>
     </div>
