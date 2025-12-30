@@ -1,49 +1,23 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import { NavBarSections } from "./@types/types";
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-import Products from "./pages/Products";
-import Promotions from "./pages/Promotions";
-import Settings from "./pages/Settings";
-import Users from "./pages/Users";
+import { Route, Routes } from "react-router-dom";
+const Orders = lazy(() => import("./pages/Orders"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Products = lazy(() => import("./pages/Products"));
+const Users = lazy(() => import("./pages/Users"));
+const Promotions = lazy(() => import("./pages/Promotions"));
+const Settings = lazy(() => import("./pages/Settings"));
 
 function App() {
-  const [activeSection, setActiveSection] =
-    useState<NavBarSections>("DASHBOARD");
   const [hideBar, setHideBar] = useState(false);
 
-  const renderItem = () => {
-    switch (activeSection) {
-      case "DASHBOARD":
-        return <Dashboard />;
-      case "ORDERS":
-        return <Orders />;
-      case "USER":
-        return <Users />;
-      case "PRODUCTS":
-        return <Products />;
-      case "PROMOTIONS":
-        return <Promotions />;
-      case "SETTINGS":
-        return <Settings />;
-      default:
-        return <Dashboard />;
-    }
-  };
-
   return (
-    <div className="">
+    <div className="bg-[#F8FAFC]">
       <div className="flex">
-        <aside className="side-bar min-h-screen  ">
-          <NavBar
-            activeSection={activeSection}
-            setActiveSection={setActiveSection}
-            hideBar={hideBar}
-            setHideBar={setHideBar}
-          />
+        <aside className="side-bar min-h-screen b- ">
+          <NavBar hideBar={hideBar} setHideBar={setHideBar} />
         </aside>
         <div className="flex-1">
           <div
@@ -52,7 +26,14 @@ function App() {
             <Header />
           </div>
           <main className={`main  mt-16 ${hideBar ? "ml-25" : "ml-51"}`}>
-            {renderItem()}
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/promotions" element={<Promotions />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
           </main>
         </div>
       </div>

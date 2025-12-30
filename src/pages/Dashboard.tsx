@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import SalesChart from "../components/Dashborad/SalesChart";
 import RevenueGraph from "../components/Dashborad/RevenueGraph";
+import TopSellingProduct from "../components/Dashborad/TopSellingProduct";
 
 const Dashboard = () => {
   const [cardData, setCardData] = useState<CardProps[]>([
@@ -69,10 +70,20 @@ const Dashboard = () => {
         <div className="chart w-full lg:w-[48%] p-6 h-full border border-gray-200 rounded-2xl shadow-2xl  ">
           <SalesChart />
         </div>
-        <div className="w-full lg:w-[48%] border p-6 border-gray-200 rounded-2xl shadow-2xl p-3 ">
+        <div className="w-full lg:w-[48%] border border-gray-200 rounded-2xl shadow-2xl p-3 ">
           <RevenueGraph />
         </div>
       </div>
+
+      <div className="flex flex-wrap mt-7 gap-5 justify-around md:mt-10 m-3 ">
+        <div className="chart w-full lg:w-[48%] h-full border border-gray-200 rounded-2xl shadow-2xl  ">
+          <TopSellingProduct />
+        </div>
+        <div className="w-full lg:w-[48%] border  border-gray-200 rounded-2xl shadow-2xl p-3 ">
+          {/* <RevenueGraph /> */}
+        </div>
+      </div>
+
     </div>
   );
 };

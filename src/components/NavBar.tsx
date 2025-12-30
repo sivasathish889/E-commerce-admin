@@ -1,21 +1,16 @@
 import { useEffect } from "react";
-import type { NavBarSections } from "../@types/types";
 import { NavItems } from "../utils/constants";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link, useLocation } from "react-router-dom";
 
 type Props = {
-  activeSection: NavBarSections;
-  setActiveSection: (section: NavBarSections) => void;
   hideBar: boolean;
   setHideBar: (hideBar: boolean) => void;
 };
 
-const NavBar = ({
-  activeSection,
-  setActiveSection,
-  hideBar,
-  setHideBar,
-}: Props) => {
+const NavBar = ({ hideBar, setHideBar }: Props) => {
+  const path = useLocation().pathname;
+  console.log(path);
 
   // auto hide when window width 768 pix
   useEffect(() => {
@@ -32,24 +27,24 @@ const NavBar = ({
   }, []);
 
   return (
-    <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r-2 border-r-gray-300 fixed">
+    <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r-2 border-r-gray-300 fixed bg-[#FFFFFF]">
       <div>
         <div className="logo h-28">
           <img src="" alt="" />
         </div>
         <div className="nav-item flex flex-col justify-center items-center px-3 transition-all duration-700 ease-in-out">
           {NavItems.map((item, idx) => (
-            <div
+            <Link
+              to={item.path}
               className={`
               nav-item flex gap-2 not-md:justify-center md:justify-baseline items-center px-2 md:px-6 py-3  my-2 w-full cursor-pointer rounded-xl transition-all duration-700 ease-in-out text-black/75 text-xs lg:text-sm
               ${
-                activeSection === item.name
+                path === item.path
                   ? "bg-primary text-white "
                   : "hover:bg-primary/15  " + (hideBar ? "justify-center " : "")
               }
             `}
               key={idx}
-              onClick={() => setActiveSection(item.name)}
             >
               {item.icon}
 
@@ -58,7 +53,7 @@ const NavBar = ({
                   {item.name}
                 </span>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
