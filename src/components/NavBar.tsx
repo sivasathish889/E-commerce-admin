@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { NavBarSections } from "../@types/types";
 import { NavItems } from "../utils/constants";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -15,6 +16,21 @@ const NavBar = ({
   hideBar,
   setHideBar,
 }: Props) => {
+
+  // auto hide when window width 768 pix
+  useEffect(() => {
+    const handleResize = () => {
+      setHideBar(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r-2 border-r-gray-300 fixed">
       <div>
