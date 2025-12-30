@@ -41,7 +41,7 @@ const RevenueGraph = () => {
   ]);
   return (
     <>
-      <p className="text-xs md:text-sm font-bold">Monthly Revenue</p>
+      <p className="text-xs md:text-sm font-bold ">Monthly Revenue</p>
       <p className="text-xs md:text-sm opacity-65">
         Revenue breakdown by month
       </p>
@@ -66,7 +66,7 @@ const RevenueGraph = () => {
         <YAxis width="auto" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="amt" barSize={20} fill="#413ea0" />
+        <Bar dataKey="amt"  barSize={30} fill="#8884d8" radius={[10, 10, 0, 0]} />
         <Line type="monotone" dataKey="amt" stroke="#ff7300" />
         <RechartsDevtools />
       </ComposedChart>

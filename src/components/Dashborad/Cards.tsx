@@ -12,7 +12,7 @@ export type CardProps = {
 const Cards = ({ mainIcon, trendIcon, percentage, name, cost,color }: CardProps) => {
   return (
     <>
-      <div className="shadow-md border border-gray-200 p-6 px-10 space-y-4 rounded-xl bg-white">
+      <div className="shadow-sm border border-gray-200 p-6 px-10 space-y-4 rounded-xl bg-white">
         <div className="percentage flex gap-4 justify-center items-center">
           <div className={`p-2 rounded-md bg-[#F0FDF4] `}>
             {mainIcon}

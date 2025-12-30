@@ -27,7 +27,7 @@ const NavBar = ({ hideBar, setHideBar }: Props) => {
   }, []);
 
   return (
-    <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r-2 border-r-gray-300 fixed bg-[#FFFFFF]">
+    <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r border-r-gray-300 fixed bg-[#FFFFFF]">
       <div>
         <div className="logo h-28">
           <img src="" alt="" />
@@ -40,7 +40,7 @@ const NavBar = ({ hideBar, setHideBar }: Props) => {
               nav-item flex gap-2 not-md:justify-center md:justify-baseline items-center px-2 md:px-6 py-3  my-2 w-full cursor-pointer rounded-xl transition-all duration-700 ease-in-out text-black/75 text-xs lg:text-sm
               ${
                 path === item.path
-                  ? "bg-primary text-white "
+                  ? "bg-linear-to-r from-[#34D399] to-[#059669] text-white "
                   : "hover:bg-primary/15  " + (hideBar ? "justify-center " : "")
               }
             `}
