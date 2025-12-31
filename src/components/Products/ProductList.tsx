@@ -59,10 +59,8 @@ const ProductList = () => {
             placeholder="Search Products..."
           />
         </div>
-        <div className="see-all">
-          <p className="bg-linear-to-r from-gradient-primary to-gradient-secondary px-4 py-1 rounded-md cursor-pointer text-white  text-sm">
-            View All
-          </p>
+        <div className="view-all  cursor-pointer rounded-md bg-linear-to-r from-gradient-primary to-gradient-secondary">
+          <p className=" px-6 py-1  text-white cursor-pointer z-10 select-none text-base">View All</p>
         </div>
       </div>
       <table className="w-full border-collapse">

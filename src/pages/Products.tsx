@@ -38,20 +38,20 @@ const Products = () => {
     },
   ]);
   return (
-    <div className="p-5">
+    <div className="px-5">
       <div className="header flex justify-between items-center">
         <div>
-          <p className="text-lg">Products</p>
-          <p className="text-sm opacity-65">Manage your product inventory</p>
+          <p className="text-2xl font-semibold">Products</p>
+          <p className="text-base opacity-65">Manage your product inventory</p>
         </div>
         <div>
-          <button className="bg-linear-to-r from-gradient-primary to-gradient-secondary text-white cursor-pointer px-3 py-2 rounded-md text-sm flex justify-center items-center gap-2">
+          <button className="bg-linear-to-r from-gradient-primary to-gradient-secondary text-white cursor-pointer px-6 py-2 rounded-md text-base flex justify-center items-center gap-2">
             <GoPlus size={20} />
             Add Product
           </button>
         </div>
       </div>
-      <div className="cards flex w-full justify-between mt-8">
+      <div className="cards flex w-full justify-around mt-8 flex-wrap gap-5">
         {data.map(({ color, id, name, value }) => (
           <Cards color={color} id={id} name={name} value={value} />
         ))}

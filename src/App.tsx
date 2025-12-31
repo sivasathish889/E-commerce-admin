@@ -1,4 +1,4 @@
-import { lazy, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
@@ -11,17 +11,36 @@ const Promotions = lazy(() => import("./pages/Promotions"));
 const Settings = lazy(() => import("./pages/Settings"));
 
 function App() {
-  const [hideBar, setHideBar] = useState(false);
+  const [hideBar, setHideBar] = useState(() => {
+    if (window.innerWidth < 768) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 
+  useEffect(() => {
+    const handleResize = () => {
+      setHideBar(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  console.log(hideBar);
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="bg-background w-full">
       <div className="flex">
         <aside className="side-bar min-h-screen b- ">
           <NavBar hideBar={hideBar} setHideBar={setHideBar} />
         </aside>
         <div className="flex-1">
           <div
-            className={`header flex-1 w-full ${hideBar ? "ml-25" : "ml-51"}`}
+            className={`header flex-1 w-full ml-28.5 sm:ml-28.5 md:ml-47 lg:ml-50.5 }`}
           >
             <Header />
           </div>

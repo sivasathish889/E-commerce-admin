@@ -1,4 +1,4 @@
-import { Activity, useEffect } from "react";
+import { Activity } from "react";
 import { NavItems } from "../utils/constants";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
@@ -11,19 +11,6 @@ type Props = {
 const NavBar = ({ hideBar, setHideBar }: Props) => {
   const path = useLocation().pathname;
 
-  // auto hide when window width 768 pix
-  useEffect(() => {
-    const handleResize = () => {
-      setHideBar(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r border-r-gray-300 fixed bg-[#FFFFFF]">
