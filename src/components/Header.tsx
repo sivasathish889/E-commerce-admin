@@ -7,8 +7,8 @@ const Header = () => {
         <IoSearchOutline size={20} opacity={"40%"} className="absolute top-3.5 left-13" />
         <input type="text" name="" id="" className="ps-10 border border-black/15 w-full py-1 rounded-md text-base focus:outline-1 focus:outline-black/15" placeholder="Search Orders,Users"/>
       </div>
-      <div className="profile w-[30%] bg-blue-400">
-        <p className="w-10 h-10 bg-amber-600 rounded-md"></p>
+      <div className="profile w-[30%]">
+        <p className="w-10 h-10  rounded-md"></p>
       </div>
     </div>
   )

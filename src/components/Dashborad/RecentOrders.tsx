@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { FaEdit, FaRegEye } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 const RecentOrders = () => {
   const [data, setData] = useState([
@@ -44,14 +46,18 @@ const RecentOrders = () => {
     },
   ]);
   return (
-    <div className="w-full p-4 rounded-lg shadow-sm">
+    <div className="w-full p-4 rounded-lg shadow-sm ">
       <div className="flex justify-between px-5 items-center mb-5">
         <div>
           <p className="text-base">Recent Orders</p>
-          <p className="text-sm opacity-65">Latest customer orders and their status</p>
+          <p className="text-sm opacity-65">
+            Latest customer orders and their status
+          </p>
         </div>
         <div className="see-all">
-          <p className="bg-linear-to-r from-[#34D399] to-[#059669] px-2 py-1 rounded-md cursor-pointer text-white text-base">View All</p>
+          <p className="bg-linear-to-r from-gradient-primary to-gradient-secondary px-2 py-1 rounded-md cursor-pointer text-white text-base">
+            View All
+          </p>
         </div>
       </div>
       <table className="w-full border-collapse">
@@ -66,7 +72,10 @@ const RecentOrders = () => {
               "Date",
               "Action",
             ].map((item, index) => (
-              <td key={index} className="p-4 text-sm font-semibold text-gray-600">
+              <td
+                key={index}
+                className="p-4 text-sm font-semibold text-gray-600 bg-amber-200"
+              >
                 {item}
               </td>
             ))}
@@ -74,12 +83,15 @@ const RecentOrders = () => {
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index} className="border-b border-black/15 hover:bg-gray-50 text-xs md:text-base">
-              <td className="p-4">{item.id}</td>
-              <td className="p-4">{item.name}</td>
-              <td className="p-4">{item.Product}</td>
-              <td className="p-4">₹{item.amount}</td>
-              <td className="p-4">
+            <tr
+              key={index}
+              className="border-b border-black/15 hover:bg-gray-50 text-xs md:text-base"
+            >
+              <td className="p-2 md:p-4">{item.id}</td>
+              <td className="p-2 md:p-4">{item.name}</td>
+              <td className="p-2 md:p-4">{item.Product}</td>
+              <td className="p-2 md:p-4">₹{item.amount}</td>
+              <td className="p-2 md:p-4">
                 <span
                   className={`px-2 py-1 rounded-full text-xs ${
                     item.status === "COMPLETED"
@@ -90,15 +102,16 @@ const RecentOrders = () => {
                   {item.status}
                 </span>
               </td>
-              <td className="p-4">{item.Date}</td>
-              <td className="p-4">
-                <div className="md:flex items-center gap-2">
-                  <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 w-full rounded-md text-sm">
-                    Edit
-                  </button>
-                  <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 w-full rounded-md text-sm">
-                    Delete
-                  </button>
+              <td className="p-2 md:p-4 whitespace-nowrap">{item.Date}</td>
+              <td className="p-2 md:p-4">
+                <div className="flex items-center gap-2 md:gap-4 whitespace-nowrap">
+                  <FaRegEye color="blue" size={18} className="cursor-pointer" />
+                  <FaEdit color="blue" size={18} className="cursor-pointer" />
+                  <MdDeleteForever
+                    color="red"
+                    size={18}
+                    className="cursor-pointer"
+                  />
                 </div>
               </td>
             </tr>

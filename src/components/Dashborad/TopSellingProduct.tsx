@@ -43,10 +43,10 @@ const TopSellingProduct = () => {
     <div className="px-10 py-8">
       <p className="mb-5 font-semibold text-base">Top Selling Products</p>
       {data.map((item, idx) => (
-        <div className="flex flex-col">
+        <div className="flex flex-col" key={idx}>
           <div key={idx} className="flex justify-between items-center my-2">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-700 text-white rounded-xl mr-4 flex justify-center items-center opacity-65">
+              <div className="w-10 h-10 shadow-2xl bg-linear-to-r from-gradient-primary to-gradient-secondary text-white rounded-xl mr-4 flex justify-center items-center opacity-65">
                 {idx + 1}
               </div>
               <div>
