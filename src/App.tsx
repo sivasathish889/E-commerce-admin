@@ -31,7 +31,6 @@ function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log(hideBar);
   return (
     <div className="bg-background w-full">
       <div className="flex">
