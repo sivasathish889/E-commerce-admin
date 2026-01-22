@@ -2,15 +2,10 @@ import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import Cards from "../components/Products/Cards";
 import ProductList from "../components/Products/ProductList";
-
-export type ProductCardsType = {
-  id: number;
-  name: string;
-  value: number;
-  color: string;
-};
+import type { ProductCardsType } from "../@types/types";
 
 const Products = () => {
+  // @ts-ignore
   const [data, setData] = useState<ProductCardsType[]>([
     {
       id: 1,
@@ -56,7 +51,7 @@ const Products = () => {
           <Cards color={color} id={id} name={name} value={value} />
         ))}
       </div>
-      <main className="main mt-5 ">
+      <main className="main mt-10 ">
         <ProductList />
       </main>
     </div>

@@ -1,7 +1,6 @@
 import {
   ComposedChart,
   Line,
-  Area,
   Bar,
   XAxis,
   YAxis,
@@ -13,6 +12,7 @@ import { RechartsDevtools } from "@recharts/devtools";
 import { useState } from "react";
 
 const RevenueGraph = () => {
+  // @ts-ignore
   const [graphData, setGraphData] = useState([
     {
       name: "Page A",

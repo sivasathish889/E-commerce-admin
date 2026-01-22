@@ -11,6 +11,7 @@ import { RechartsDevtools } from "@recharts/devtools";
 import { useState } from "react";
 
 const SalesChart = () => {
+  // @ts-ignore
   const [chartData, setChartData] = useState([
     { name: "Page A", uv: 723 },
     { name: "Page B", uv: 3000 },

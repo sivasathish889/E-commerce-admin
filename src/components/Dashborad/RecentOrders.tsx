@@ -3,6 +3,7 @@ import { FaEdit, FaRegEye } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 
 const RecentOrders = () => {
+  // @ts-ignore
   const [data, setData] = useState([
     {
       id: "1",

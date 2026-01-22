@@ -1,14 +1,7 @@
-import type React from "react";
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
+import type { CardProps } from "../../@types/types";
 
-export type CardProps = {
-  mainIcon: React.ReactNode;
-  trendIcon: "UP" | "DOWN" ;
-  percentage: number;
-  name: string;
-  cost: string;
-  color : string
-};
+
 const Cards = ({ mainIcon, trendIcon, percentage, name, cost,color }: CardProps) => {
   return (
     <>

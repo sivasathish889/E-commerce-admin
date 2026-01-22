@@ -1,4 +1,4 @@
-import type { ProductCardsType } from "../../pages/Products";
+import type { ProductCardsType } from "../../@types/types";
 
 const Cards = ({ color, name, value, id }: ProductCardsType) => {
   return (

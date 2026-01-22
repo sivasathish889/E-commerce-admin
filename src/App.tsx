@@ -34,12 +34,12 @@ function App() {
   return (
     <div className="bg-background w-full">
       <div className="flex">
-        <aside className="side-bar min-h-screen b- ">
+        <aside className="side-bar min-h-screen ">
           <NavBar hideBar={hideBar} setHideBar={setHideBar} />
         </aside>
         <div className="flex-1">
           <div
-            className={`header flex-1 w-full ml-28.5 sm:ml-28.5 md:ml-47 lg:ml-50.5 }`}
+            className={`${hideBar ? "ml-28.5!" : "ml-51"} header flex-1 w-full ml-28.5 sm:ml-28.5 md:ml-47 lg:ml-50.5 `}
           >
             <Header />
           </div>

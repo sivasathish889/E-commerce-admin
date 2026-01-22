@@ -4,6 +4,7 @@ import { GoSearch } from "react-icons/go";
 import { MdDeleteForever } from "react-icons/md";
 
 const ProductList = () => {
+  // @ts-ignore
   const [data, setData] = useState([
     {
       id: 1,

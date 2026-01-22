@@ -1,7 +1,7 @@
 export const ADMIN_URL_ENDPOINTS = {
   category: {
     GET_CATEGORY: "categories",
-    GET_USER_BY_ID: "category",
+    GET_CATEGORY_BY_ID: "category",
     POST_CATEGORY: "category",
     UPDATE_CATEGORY: "category",
     DELETE_CATEGORY: "category",

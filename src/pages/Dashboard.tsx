@@ -1,13 +1,15 @@
 import { FaBox, FaIndianRupeeSign, FaUser } from "react-icons/fa6";
-import Cards, { type CardProps } from "../components/Dashborad/Cards";
 import { useState } from "react";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import SalesChart from "../components/Dashborad/SalesChart";
 import RevenueGraph from "../components/Dashborad/RevenueGraph";
 import TopSellingProduct from "../components/Dashborad/TopSellingProduct";
 import RecentOrders from "../components/Dashborad/RecentOrders";
+import type { CardProps } from "../@types/types";
+import Cards from "../components/Dashborad/Cards";
 
 const Dashboard = () => {
+  // @ts-ignore
   const [cardData, setCardData] = useState<CardProps[]>([
     {
       name: "Total Revenue",

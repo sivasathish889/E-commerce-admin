@@ -2,6 +2,7 @@ import  { useState } from "react";
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
 
 const TopSellingProduct = () => {
+  // @ts-ignore
   const [data, setData] = useState([
     {
       id: 1,
