@@ -33,7 +33,7 @@ const Products = () => {
     },
   ]);
   return (
-    <div className="px-5">
+    <div className="">
       <div className="header flex justify-between items-center">
         <div>
           <p className="text-2xl font-semibold">Products</p>

@@ -39,11 +39,11 @@ function App() {
         </aside>
         <div className="flex-1">
           <div
-            className={`${hideBar ? "ml-28.5!" : "ml-51"} header flex-1 w-full ml-28.5 sm:ml-28.5 md:ml-47 lg:ml-50.5 `}
+            className={`${hideBar ? "ml-18.5!" : "ml-38"} header flex-1 w-full ml-28.5 sm:ml-28.5 md:ml-46 lg:ml-49 `}
           >
             <Header />
           </div>
-          <main className={`main  mt-16 ${hideBar ? "ml-25" : "ml-51"}`}>
+          <main className={` mx-5 main mt-16 ${hideBar ? "ml-25" : "ml-51"}`}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />

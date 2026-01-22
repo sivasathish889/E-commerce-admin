@@ -28,5 +28,17 @@ export type UserCardType = {
   title: string;
   value: string;
   percentage: string;
+  status : "UP" | "DOWN"
+};
+
+export type UserType = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  status: "Active" | "Inactive";
+  orders: string;
+  totalSpent: string;
+  lastActive: string;
 };
 export type NavBarSections = typeof NavBarSections[keyof typeof NavBarSections]; 
