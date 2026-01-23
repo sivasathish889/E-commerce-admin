@@ -53,6 +53,16 @@ const UserList = () => {
       totalSpent: "$2,000",
       lastActive: "2024-06-18",
     },
+    {
+      id: 5,
+      name: "Admin User",
+      email: "admin@example.com",
+      role: "Staff",
+      status: "Active",
+      orders: "N/A",
+      totalSpent: "$0",
+      lastActive: "2024-06-20",
+    }
   ]);
   return (
     <div className="p-4 rounded-md  gap-8  text-gray-600 ">
@@ -140,10 +150,10 @@ const UserList = () => {
                 >
                   {user.status}
                 </td>
-                <td className="px-4 py-2">{user.orders}</td>
-                <td className="px-4 py-2">{user.totalSpent}</td>
-                <td className="px-4 py-2">{user.lastActive}</td>
-                <td className="px-4 py-2 flex gap-4 justify-between">
+                <td className="p-2 md:px-4 md:py-2">{user.orders}</td>
+                <td className="p-2 md:px-4 md:py-2">{user.totalSpent}</td>
+                <td className="p-2 md:px-4 md:py-2">{user.lastActive}</td>
+                <td className="p-2 md:px-4 md:py-2 flex gap-4 justify-between">
                     <Tooltip text="Suspend User">
                       <LuShieldBan size={20} className="cursor-pointer" />
                     </Tooltip>

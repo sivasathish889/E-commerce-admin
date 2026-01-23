@@ -1,19 +1,19 @@
 export const NavBarSections = {
-    DASHBOARD: 'DASHBOARD',
-    PRODUCTS: 'PRODUCTS',
-    USER: 'USER',
-    ORDERS: 'ORDERS',
-    PROMOTIONS: 'PROMOTIONS',
-    SETTINGS: 'SETTINGS'
+  DASHBOARD: "DASHBOARD",
+  PRODUCTS: "PRODUCTS",
+  USER: "USER",
+  ORDERS: "ORDERS",
+  PROMOTIONS: "PROMOTIONS",
+  SETTINGS: "SETTINGS",
 } as const;
 
 export type CardProps = {
   mainIcon: React.ReactNode;
-  trendIcon: "UP" | "DOWN" ;
+  trendIcon: "UP" | "DOWN";
   percentage: number;
   name: string;
   cost: string;
-  color : string
+  color: string;
 };
 
 export type ProductCardsType = {
@@ -28,7 +28,7 @@ export type UserCardType = {
   title: string;
   value: string;
   percentage: string;
-  status : "UP" | "DOWN"
+  status: "UP" | "DOWN";
 };
 
 export type UserType = {
@@ -41,4 +41,14 @@ export type UserType = {
   totalSpent: string;
   lastActive: string;
 };
-export type NavBarSections = typeof NavBarSections[keyof typeof NavBarSections]; 
+
+export type OrderType = {
+  id: number;
+  customer: string;
+  date: string;
+  items: number;
+  status: "Pending" | "Shipped" | "Processing" | "Delivered" | "Cancelled";
+  total: number;
+};
+export type NavBarSections =
+  (typeof NavBarSections)[keyof typeof NavBarSections];

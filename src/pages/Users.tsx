@@ -54,12 +54,32 @@ const Users = () => {
       </div>
       <div className="cards flex w-full justify-around mt-8 flex-wrap gap-5">
         {cardsData.map(({ id, title, value, percentage, status }) => (
-          <Cards id={id} title={title} value={value} percentage={percentage} status={status} />
+          <Cards
+            id={id}
+            title={title}
+            value={value}
+            percentage={percentage}
+            status={status}
+          />
         ))}
       </div>
-      <main className="main mt-5 border border-gray-300 rounded-md bg-white">
-        <UserList />
-      </main>
+      <div className="bg-white border border-gray-300 my-5 p-4 rounded-md">
+        <main className="main">
+          <UserList />
+        </main>
+        <hr className="opacity-30"/>
+        <section className="footer flex justify-between items-center mt-4 mx-5">
+          <div className="user-count text-sm text-gray-600">25 Users</div>
+          <div className="pre-next flex gap-4">
+            <button className="border border-gray-400 text-gray-800 px-4 py-0 rounded-md">
+              Prev
+            </button>
+            <button className="border border-gray-400 text-gray-800 px-4 py-0 rounded-md">
+              Next
+            </button>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

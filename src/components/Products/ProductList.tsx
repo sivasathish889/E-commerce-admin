@@ -66,7 +66,7 @@ const ProductList = () => {
       </div>
       <table className="w-full border-collapse">
         <thead>
-          <tr className="w-full border-b border-black/15">
+          <tr className="w-full border-b border-black/15 bg-gray-200">
             {[
               "Id",
               "Name",
@@ -78,26 +78,26 @@ const ProductList = () => {
             ].map((item, idx) => (
               <th
                 key={idx}
-                className="py-4 text-start px-5 text-sm text-gray-600 font-semibold bg-amber-200"
+                className="py-4 text-start px-5 text-sm text-gray-600 font-semibold"
               >
                 {item}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-gray-200 text-gray-700">
           {data.map(({ category, id, price, productName, stock, status }) => (
             <tr
               key={id}
               className="border-b border-black/15 hover:bg-gray-50 text-xs md:text-base"
             >
-              <td className="p-2 md:p-4">{id}</td>
-              <td className="p-2 md:p-4">{productName}</td>
-              <td className="p-2 md:p-4">{category}</td>
-              <td className="p-2 md:p-4">{price}</td>
-              <td className="p-2 md:p-4">{stock}</td>
-              <td className="p-2 md:p-4">{status}</td>
-              <td className="p-2 md:p-4">
+              <td className="p-2 md:py-3 md:px-4">{id}</td>
+              <td className="p-2 md:py-3 md:px-4">{productName}</td>
+              <td className="p-2 md:py-3 md:px-4">{category}</td>
+              <td className="p-2 md:py-3 md:px-4">{price}</td>
+              <td className="p-2 md:py-3 md:px-4">{stock}</td>
+              <td className="p-2 md:py-3 md:px-4">{status}</td>
+              <td className="p-2 md:py-3 md:px-4">
                 <div className="flex gap-2 md:gap-5">
                   <FaEdit color="blue" size={18} className="cursor-pointer" />
                   <MdDeleteForever
