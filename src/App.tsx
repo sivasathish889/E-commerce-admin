@@ -32,7 +32,7 @@ function App() {
     };
   }, []);
   return (
-    <div className="bg-background w-full">
+    <div className="bg-background w-full ">
       <div className="flex">
         <aside className="side-bar min-h-screen ">
           <NavBar hideBar={hideBar} setHideBar={setHideBar} />

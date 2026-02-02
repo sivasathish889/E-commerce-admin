@@ -1,9 +1,8 @@
-import  { useState } from "react";
+import  { useEffect, useState } from "react";
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
 
 const TopSellingProduct = () => {
-  // @ts-ignore
-  const [data, setData] = useState([
+    const [data, setData] = useState([
     {
       id: 1,
       name: "Product 1",
@@ -40,10 +39,29 @@ const TopSellingProduct = () => {
       trend: "UP",
     },
   ]);
+  // @ts-ignore
+  const [currentPage, setCurrentPage] = useState(1);
+  // @ts-ignore
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  useEffect(() => {
+    fetch(`https://example.com/api/data?page=${currentPage}&limit=${itemsPerPage}`)
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error(error));
+  }, [currentPage, itemsPerPage]);
+
+  // @ts-ignore
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = data.slice(startIndex, endIndex);
+  
+
   return (
     <div className="px-10 py-8">
       <p className="mb-5 font-semibold text-base">Top Selling Products</p>
-      {data.map((item, idx) => (
+      {currentItems.map((item, idx) => (
         <div className="flex flex-col" key={idx}>
           <div key={idx} className="flex justify-between items-center my-2">
             <div className="flex items-center">

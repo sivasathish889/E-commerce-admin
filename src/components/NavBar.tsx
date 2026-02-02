@@ -10,8 +10,6 @@ type Props = {
 
 const NavBar = ({ hideBar, setHideBar }: Props) => {
   const path = useLocation().pathname;
-
-
   return (
     <div className="h-full flex justify-between flex-col transition-all duration-700 ease-in-out border-r border-r-gray-300 fixed bg-[#FFFFFF] z-10">
       <div>

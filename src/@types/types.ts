@@ -52,3 +52,23 @@ export type OrderType = {
 };
 export type NavBarSections =
   (typeof NavBarSections)[keyof typeof NavBarSections];
+
+export type TitleProps = {
+  title: string;
+  subtitle: string;
+};
+
+export type ButtonProps = {
+  children: React.ReactNode;
+  size: "sm" | "md" | "lg";
+  onClick?: () => void;
+  className?: string;
+};
+
+export type InputProps = {
+  label: string;
+  placeholder?: string;
+  value?: string | number;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+};

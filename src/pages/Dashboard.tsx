@@ -7,6 +7,7 @@ import TopSellingProduct from "../components/Dashborad/TopSellingProduct";
 import RecentOrders from "../components/Dashborad/RecentOrders";
 import type { CardProps } from "../@types/types";
 import Cards from "../components/Dashborad/Cards";
+import Title from "../components/ui/Title";
 
 const Dashboard = () => {
   // @ts-ignore
@@ -49,10 +50,10 @@ const Dashboard = () => {
   return (
     <div className=" min-w-full h-full">
       <header className="header m-6">
-        <p className=" text-sm font-bold md:text-2xl">DashBorad</p>
-        <p className=" text-xs md:text-base">
-          Welcome back! Here's what's happening with your store today.
-        </p>
+        <Title
+          title="Dashboard"
+          subtitle=" Welcome back! Here's what's happening with your store today."
+        />
       </header>
       <div className="cards flex not-md:justify-center md:justify-around mx-2 md:mx-6 mt-3 flex-wrap whitespace-break-spaces gap-4 ">
         {cardData.map(
@@ -66,7 +67,7 @@ const Dashboard = () => {
               trendIcon={trendIcon}
               color={color}
             />
-          )
+          ),
         )}
       </div>
       <div className="flex flex-wrap mt-7 gap-5 justify-around md:mt-10 m-3 ">

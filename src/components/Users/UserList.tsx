@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { FiFilter } from "react-icons/fi";
 import { LuShieldBan } from "react-icons/lu";
@@ -64,6 +64,26 @@ const UserList = () => {
       lastActive: "2024-06-20",
     }
   ]);
+    // @ts-ignore
+    const [currentPage, setCurrentPage] = useState(1);
+    // @ts-ignore
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+
+    useEffect(() => {
+      fetch(
+        `https://example.com/api/data?page=${currentPage}&limit=${itemsPerPage}`,
+      )
+        .then((response) => response.json())
+        .then((data) => setUserData(data))
+        .catch((error) => console.error(error));
+    }, [currentPage, itemsPerPage]);
+  
+    // @ts-ignore
+    const totalPages = Math.ceil(userData.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentUsers = userData.slice(startIndex, endIndex);
+  
   return (
     <div className="p-4 rounded-md  gap-8  text-gray-600 ">
       <div className="tabbar bg-black/15 inline-block  gap-3 px-3 py-1 rounded-4xl border border-black/20 text-sm ">
@@ -129,7 +149,7 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {userData.map((user) => (
+            {currentUsers.map((user) => (
               <tr key={user.id} className="hover:bg-gray-50">
                 <td className="px-4 py-2 text-sm flex items-center gap-3 whitespace-nowrap my-2">
                   <div className="profile-pic bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex justify-center items-center font-semibold">
@@ -171,6 +191,27 @@ const UserList = () => {
             ))}
           </tbody>
         </table>
+         <div className="pagination w-full flex justify-end items-center mt-4">
+        <button
+          className="px-3 py-1 mt-4 mr-2 bg-gray-200 rounded-md disabled:opacity-50"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="text-sm md:text-base mt-4">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="px-3 py-1 mt-4 ml-2 bg-gray-200 rounded-md disabled:opacity-50"
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
       </div>
     </div>
   );

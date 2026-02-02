@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import OrderList from "../components/Orders/OrderList";
+import Title from "../components/ui/Title";
 
 const Orders = () => {
   const [activeTab, setActiveTab] = useState<
@@ -10,10 +11,10 @@ const Orders = () => {
     <div className="min-h-full w-full">
       <div className="header flex justify-between gap-6 items-center py-5">
         <div className="space-y-1">
-          <p className="text-md md:text-2xl font-semibold">Order Management</p>
-          <p className="text-sm whitespace-nowrap md:text-base opacity-65">
-            Track and manage customer orders, shipments, and returns
-          </p>
+          <Title
+            title="Order Management"
+            subtitle="Track and manage customer orders, shipments, and returns"
+          />
         </div>
         <div>
           <button className="bg-linear-to-r from-gradient-primary whitespace-nowrap to-gradient-secondary text-white cursor-pointer px-6 py-2 rounded-md text-base flex justify-center items-center gap-2">
