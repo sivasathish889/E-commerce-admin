@@ -58,17 +58,21 @@ export type TitleProps = {
   subtitle: string;
 };
 
-export type ButtonProps = {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size: "sm" | "md" | "lg";
   onClick?: () => void;
   className?: string;
-};
+}
 
-export type InputProps = {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   placeholder?: string;
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+}
+
+export type ModalProps = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 };

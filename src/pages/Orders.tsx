@@ -2,6 +2,7 @@ import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import OrderList from "../components/Orders/OrderList";
 import Title from "../components/ui/Title";
+import Button from "../components/ui/Button";
 
 const Orders = () => {
   const [activeTab, setActiveTab] = useState<
@@ -9,7 +10,7 @@ const Orders = () => {
   >("ALL");
   return (
     <div className="min-h-full w-full">
-      <div className="header flex justify-between gap-6 items-center py-5">
+      <div className="header flex justify-between gap-6 items-center py-5 md:ms-5">
         <div className="space-y-1">
           <Title
             title="Order Management"
@@ -17,13 +18,13 @@ const Orders = () => {
           />
         </div>
         <div>
-          <button className="bg-linear-to-r from-gradient-primary whitespace-nowrap to-gradient-secondary text-white cursor-pointer px-6 py-2 rounded-md text-base flex justify-center items-center gap-2">
+          <Button size="sm" className="flex items-center gap-2">
             <GoPlus size={20} />
             Add Users
-          </button>
+          </Button>
         </div>
       </div>
-      <main className="bg-white rounded-lg border border-gray-300">
+      <main className="bg-white rounded-lg border border-gray-300 md:ps-5">
         <div className="tabbar bg-black/15 inline-block gap-1 md:gap-3 px-1 md:px-3 py-1 rounded-4xl border border-black/20 text-sm mt-5 ">
           <div className="flex text-center gap-4">
             <p

@@ -5,6 +5,7 @@ import ProductList from "../components/Products/ProductList";
 import type { ProductCardsType } from "../@types/types";
 import Button from "../components/ui/Button";
 import Title from "../components/ui/Title";
+import AddProductModal from "../components/Products/AddProductModal";
 
 const Products = () => {
   // @ts-ignore
@@ -34,6 +35,8 @@ const Products = () => {
       color: "#F44336",
     },
   ]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log(isModalOpen);
   return (
     <div className="md:ms-4">
       <div className="header flex justify-between items-center">
@@ -41,7 +44,7 @@ const Products = () => {
           <Title title="Products" subtitle="Manage your product inventory" />
         </div>
         <div>
-          <Button size="md">
+          <Button size="md" onClick={() => setIsModalOpen(!isModalOpen)}>
             <GoPlus size={20} />
             Add Product
           </Button>
@@ -52,9 +55,12 @@ const Products = () => {
           <Cards color={color} id={id} name={name} value={value} />
         ))}
       </div>
+      {/* Product Lists */}
       <main className="main mt-10 ">
         <ProductList />
       </main>
+      {/* Add Product Modal */}
+      {isModalOpen && <AddProductModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />}
     </div>
   );
 };

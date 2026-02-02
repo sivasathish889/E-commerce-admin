@@ -1,6 +1,7 @@
 import { useState } from "react";
 import General from "../components/settings/General";
 import Admins from "../components/settings/Admins";
+import Title from "../components/ui/Title";
 // import Security from "../components/settings/Security";
 // import Payment from "../components/settings/Payment";
 
@@ -11,11 +12,11 @@ const Settings = () => {
   return (
     <div className="md:m-5">
       <div className="header flex justify-between items-center p-3">
-        <div >
-          <p className="text-2xl font-semibold">Settings & Security</p>
-          <p className="text-base opacity-65">
-            Manage your store settings, admin accounts, and security preferences
-          </p>
+        <div>
+          <Title
+            title="Settings & Security"
+            subtitle="Manage your store settings, admin accounts, and security preferences"
+          />
         </div>
       </div>
       <main className="bg-white rounded-lg border border-gray-300 px-4 shadow-sm">

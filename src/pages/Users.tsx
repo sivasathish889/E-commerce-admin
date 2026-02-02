@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { GoPlus } from "react-icons/go";
 import Cards from "../components/Users/Cards";
 import type { UserCardType } from "../@types/types";
 import UserList from "../components/Users/UserList";
+import Title from "../components/ui/Title";
 
 const Users = () => {
   // @ts-ignore
@@ -37,19 +37,13 @@ const Users = () => {
     },
   ]);
   return (
-    <div className="min-w-full h-full">
+    <div className="min-w-full h-full md:m-5">
       <div className="header flex justify-between gap-6 items-center">
         <div>
-          <p className="text-md md:text-2xl font-semibold">Users Management</p>
-          <p className="text-sm whitespace-nowrap md:text-base opacity-65">
-            Manage user accounts, permissions, and activity
-          </p>
-        </div>
-        <div>
-          <button className="bg-linear-to-r from-gradient-primary whitespace-nowrap to-gradient-secondary text-white cursor-pointer px-6 py-2 rounded-md text-base flex justify-center items-center gap-2">
-            <GoPlus size={20} />
-            Add Users
-          </button>
+          <Title
+            title="Users Management"
+            subtitle="Manage user accounts, permissions, and activity"
+          />
         </div>
       </div>
       <div className="cards flex w-full justify-around mt-8 flex-wrap gap-5">
@@ -66,7 +60,7 @@ const Users = () => {
       <div className="bg-white border border-gray-300 my-5 p-4 rounded-md">
         <main className="main">
           <UserList />
-        </main>        
+        </main>
       </div>
     </div>
   );
