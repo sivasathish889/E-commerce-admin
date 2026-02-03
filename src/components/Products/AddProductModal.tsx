@@ -88,7 +88,13 @@ const AddProductModal = ({ isOpen, setIsOpen }: ModalProps) => {
             </div>
           </div>
           <div className="image-add-preview">
-            <label className="block mb-2 font-medium">Product Image *<span className="text-xs font-normal"> (Atlease 5 image required)</span></label>
+            <label className="block mb-2 font-medium">
+              Product Image *
+              <span className="text-xs font-normal">
+                {" "}
+                (Atlease 5 image required)
+              </span>
+            </label>
             {previewImages.length > 0 && (
               <div className="flex space-x-4 mb-4 overflow-x-auto">
                 {previewImages.map((src, index) => (
@@ -98,7 +104,6 @@ const AddProductModal = ({ isOpen, setIsOpen }: ModalProps) => {
                     alt={`Preview ${index}`}
                     className="w-24 h-24 object-cover rounded-md cursor-pointer hover:opacity-55"
                     onClick={() => selectiveImageRemove(index)}
-                    
                   />
                 ))}
               </div>
@@ -110,7 +115,6 @@ const AddProductModal = ({ isOpen, setIsOpen }: ModalProps) => {
               required
               multiple
               onChange={handleImageChange}
-              
             />
           </div>
           <div className="flex justify-end space-x-4">

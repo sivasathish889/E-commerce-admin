@@ -62,28 +62,28 @@ const UserList = () => {
       orders: "N/A",
       totalSpent: "$0",
       lastActive: "2024-06-20",
-    }
+    },
   ]);
-    // @ts-ignore
-    const [currentPage, setCurrentPage] = useState(1);
-    // @ts-ignore
-    const [itemsPerPage, setItemsPerPage] = useState(10);
+  // @ts-ignore
+  const [currentPage, setCurrentPage] = useState(1);
+  // @ts-ignore
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    useEffect(() => {
-      fetch(
-        `https://example.com/api/data?page=${currentPage}&limit=${itemsPerPage}`,
-      )
-        .then((response) => response.json())
-        .then((data) => setUserData(data))
-        .catch((error) => console.error(error));
-    }, [currentPage, itemsPerPage]);
-  
-    // @ts-ignore
-    const totalPages = Math.ceil(userData.length / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentUsers = userData.slice(startIndex, endIndex);
-  
+  useEffect(() => {
+    fetch(
+      `https://example.com/api/data?page=${currentPage}&limit=${itemsPerPage}`,
+    )
+      .then((response) => response.json())
+      .then((data) => setUserData(data))
+      .catch((error) => console.error(error));
+  }, [currentPage, itemsPerPage]);
+
+  // @ts-ignore
+  const totalPages = Math.ceil(userData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentUsers = userData.slice(startIndex, endIndex);
+
   return (
     <div className="p-4 rounded-md  gap-8  text-gray-600 ">
       <div className="tabbar bg-black/15 inline-block  gap-3 px-3 py-1 rounded-4xl border border-black/20 text-sm ">
@@ -174,9 +174,9 @@ const UserList = () => {
                 <td className="p-2 md:px-4 md:py-2">{user.totalSpent}</td>
                 <td className="p-2 md:px-4 md:py-2">{user.lastActive}</td>
                 <td className="p-2 md:px-4 md:py-2 flex gap-4 justify-between">
-                    <Tooltip text="Suspend User">
-                      <LuShieldBan size={20} className="cursor-pointer" />
-                    </Tooltip>
+                  <Tooltip text="Suspend User">
+                    <LuShieldBan size={20} className="cursor-pointer" />
+                  </Tooltip>
                   <Tooltip text="Send Email">
                     <MdOutlineMail size={20} className="cursor-pointer" />
                   </Tooltip>
@@ -191,27 +191,27 @@ const UserList = () => {
             ))}
           </tbody>
         </table>
-         <div className="pagination w-full flex justify-end items-center mt-4">
-        <button
-          className="px-3 py-1 mt-4 mr-2 bg-gray-200 rounded-md disabled:opacity-50"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span className="text-sm md:text-base mt-4">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          className="px-3 py-1 mt-4 ml-2 bg-gray-200 rounded-md disabled:opacity-50"
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
+        <div className="pagination w-full flex justify-end items-center mt-4">
+          <button
+            className="px-3 py-1 mt-4 mr-2 bg-gray-200 rounded-md disabled:opacity-50"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="text-sm md:text-base mt-4">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-3 py-1 mt-4 ml-2 bg-gray-200 rounded-md disabled:opacity-50"
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

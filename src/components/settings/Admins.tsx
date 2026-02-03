@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import type { UserType } from "../../@types/types";
 import { BsTrash } from "react-icons/bs";
@@ -58,6 +58,26 @@ const Admins = () => {
       lastActive: "2024-06-20",
     },
   ]);
+
+  // @ts-ignore
+  const [currentPage, setCurrentPage] = useState(1);
+  // @ts-ignore
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  useEffect(() => {
+    fetch(
+      `https://example.com/api/data?page=${currentPage}&limit=${itemsPerPage}`,
+    )
+      .then((response) => response.json())
+      .then((data) => setUserData(data))
+      .catch((error) => console.error(error));
+  }, [currentPage, itemsPerPage]);
+
+  // @ts-ignore
+  const totalPages = Math.ceil(userData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentUsers = userData.slice(startIndex, endIndex);
   return (
     <div className="p-5">
       <header className="flex justify-between items-center">
@@ -67,7 +87,7 @@ const Admins = () => {
       <main className="mt-4">
         <table className="table-auto w-full">
           <tbody className="w-full">
-            {userData.map((user) => (
+            {currentUsers.map((user) => (
               <tr
                 key={user.id}
                 className="hover:bg-gray-50 justify-around w-full border-b border-gray-200 flex"
@@ -100,13 +120,34 @@ const Admins = () => {
                     {user.status}
                   </div>
                   <div className="p-2 md:px-4 md:py-2 cursor-pointer">
-                    <BsTrash color="red"/>
+                    <BsTrash color="red" />
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="pagination w-full flex justify-end items-center mt-4">
+          <button
+            className="px-3 py-1 mt-4 mr-2 bg-gray-200 rounded-md disabled:opacity-50"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="text-sm md:text-base mt-4">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-3 py-1 mt-4 ml-2 bg-gray-200 rounded-md disabled:opacity-50"
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </main>
     </div>
   );

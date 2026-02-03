@@ -3,6 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { GoSearch } from "react-icons/go";
 import { MdDeleteForever } from "react-icons/md";
 import Title from "../ui/Title";
+import { FiFilter } from "react-icons/fi";
 
 const ProductList = () => {
   // @ts-ignore
@@ -83,6 +84,10 @@ const ProductList = () => {
             className="w-full p-2 ps-10 focus:outline-2 focus:outline-gradient-secondary/15 rounded-md placeholder:text-sm text:base border border-black/15"
             placeholder="Search Products..."
           />
+        </div>
+        <div className="filter w-[10%]  flex gap-2 px-2 py-1 justify-center items-center border border-gray-300 rounded-lg cursor-pointer">
+          <FiFilter />
+          <p>Filter</p>
         </div>
         <div className="view-all  cursor-pointer rounded-md bg-linear-to-r from-gradient-primary to-gradient-secondary">
           <p className=" px-6 py-1  text-white cursor-pointer z-10 select-none text-base">

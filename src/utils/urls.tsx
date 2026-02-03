@@ -1,4 +1,5 @@
 export const ADMIN_URL_ENDPOINTS = {
+  base : "/api/admin/",
   category: {
     GET_CATEGORY: "categories",
     GET_CATEGORY_BY_ID: "category",
@@ -33,3 +34,16 @@ export const ADMIN_URL_ENDPOINTS = {
     LOGOUT: "auth/logout",
   },
 };
+
+export const AdminUrlEndpoints = {
+  GET_CATEGORY: "categories",
+  GET_CATEGORY_BY_ID: "category",
+  POST_CATEGORY: "category",
+  UPDATE_CATEGORY: "category",
+  DELETE_CATEGORY: "category",
+  GET_PRODUCT: "products",
+  GET_ORDER: "orders",
+  GET_USER: "users",
+  LOGIN: "auth/login",
+} as const;
+

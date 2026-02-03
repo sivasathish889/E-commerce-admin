@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
+import Category from "./pages/Category";
 const Orders = lazy(() => import("./pages/Orders"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Products = lazy(() => import("./pages/Products"));
@@ -47,6 +48,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/categories" element={<Category />} />
               <Route path="/users" element={<Users />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/promotions" element={<Promotions />} />
